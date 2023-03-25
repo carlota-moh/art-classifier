@@ -91,36 +91,39 @@ def move_images(src_path, dest_path, n_images, n_move):
                 shutil.move(old_image, new_image)
             n_image += 1
 
-# Define styles (folder names for each of them)
-styles_dir = [
-    "Romanticism", 
-    "Baroque", 
-    "Realism", 
-    "Renaissance"
-]
-# Number of images to keep (therefore, we have balanced classes)
-n_keep = 5000
-# Split between train, validation and test
-sets = {
-    "train": 4000, 
-    "validation": 500, 
-    "test": 500
-    }
-root_dir = "data"
 
-# Iterate for each style 
-for style in styles_dir:
-    # Number of images we have initially in the source dir
-    n = n_keep
-    # Get number of images in the source dir
-    n_images = get_n_images(style)
-    # Remove images to have n_keep images in source dir
-    remove_images(style, n_images, n_keep)
-    for key, value in sets.items():
-        # Get source and destination dirs
-        src_path = style
-        dest_path = os.path.join(root_dir, key, style)
-        # Move "value" images from source to destination dir
-        move_images(src_path, dest_path, n, value)
-        # Now source dir has "value" images less
-        n -= value
+if __name__=='__main__':
+    # Define styles (folder names for each of them)
+    styles_dir = [
+        "data/Romanticism", 
+        "data/Baroque", 
+        "data/Realism", 
+        "data/Renaissance"
+    ]
+    # Number of images to keep (therefore, we have balanced classes)
+    n_keep = 5000
+    # Split between train, validation and test
+    sets = {
+        "train": 4000, 
+        "validation": 500, 
+        "test": 500
+        }
+
+    root_dir = "../data"
+
+    # Iterate for each style 
+    for style in styles_dir:
+        # Number of images we have initially in the source dir
+        n = n_keep
+        # Get number of images in the source dir
+        n_images = get_n_images(style)
+        # Remove images to have n_keep images in source dir
+        remove_images(style, n_images, n_keep)
+        for key, value in sets.items():
+            # Get source and destination dirs
+            src_path = style
+            dest_path = os.path.join(root_dir, key, style)
+            # Move "value" images from source to destination dir
+            move_images(src_path, dest_path, n, value)
+            # Now source dir has "value" images less
+            n -= value
