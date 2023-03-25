@@ -97,10 +97,10 @@ def move_images(src_path, dest_path, n_images, n_move):
 if __name__=='__main__':
     # Define styles (folder names for each of them)
     styles_dir = [
-        "data/Romanticism", 
-        "data/Baroque", 
-        "data/Realism", 
-        "data/Renaissance"
+        "Romanticism", 
+        "Baroque", 
+        "Realism", 
+        "Renaissance"
     ]
     # Number of images to keep (therefore, we have balanced classes)
     n_keep = 5000
