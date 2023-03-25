@@ -3,3 +3,13 @@
 
 # Data directory
 data/
+
+# style directories
+Baroque/
+Realism/
+Romanticism/
+Renaissance/
+real.tar.gz
+renan.tar.gz
+roman.tar.gz
+baro.tar.gz
