@@ -81,7 +81,8 @@ def move_images(src_path, dest_path, n_images, n_move):
     os.makedirs(dest_path, exist_ok=True)
     
     # Get images to move randomly
-    images_to_move = np.random.choice(np.arange(0, n_images), size=n_move, replace=False)
+    rng = np.random.default_rng(2023)
+    images_to_move = rng.choice(np.arange(0, n_images), size=n_move, replace=False)
     n_image = 0
     for path in os.walk(src_path):
         for file in path[2]:
