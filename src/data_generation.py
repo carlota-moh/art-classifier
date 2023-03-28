@@ -112,19 +112,21 @@ if __name__=='__main__':
         "test": 500
         }
 
-    root_dir = "data"
+    root_dir = os.path.join("..", "data")
 
     # Iterate for each style 
     for style in styles_dir:
+        # Set style dir
+        style_dir = os.path.join(root_dir, style)
         # Number of images we have initially in the source dir
         n = n_keep
         # Get number of images in the source dir
-        n_images = get_n_images(style)
+        n_images = get_n_images(style_dir)
         # Remove images to have n_keep images in source dir
-        remove_images(style, n_images, n_keep)
+        remove_images(style_dir, n_images, n_keep)
         for key, value in sets.items():
             # Get source and destination dirs
-            src_path = style
+            src_path = style_dir
             dest_path = os.path.join(root_dir, key, style)
             # Move "value" images from source to destination dir
             move_images(src_path, dest_path, n, value)
