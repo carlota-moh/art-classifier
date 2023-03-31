@@ -4,6 +4,9 @@
 
 # Data directory
 data/
+# Pytorch lightning logs
+lightning_logs/
+
 
 # style directories
 Baroque/
