@@ -17,13 +17,13 @@ The main objective of this project is building an Art Classifier leveraging Deep
 - #### Romanticism
 
 <p align="left">
-    <img src="docs/romanticism_example.jpg" width="400" height="400" />
+    <img src="docs/romanticism_example.jpg" width="500" height="400" />
 <p>
 
 - #### Realism
 
 <p align="left">
-    <img src="docs/realism_example.jpg" width="400" height="400" />
+    <img src="docs/realism_example.jpg" width="500" height="400" />
 <p>
 
 - #### Renaissance
