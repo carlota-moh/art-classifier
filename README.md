@@ -2,7 +2,6 @@
 
 ## **Art Classifier**
 
-
 The main goal of this project is to create an art classifier. It was developed for the Unstructured Data course in the Big Data Master's Degree at Comillas ICAI University.
 
 This project has been done by:
@@ -13,7 +12,32 @@ This project has been done by:
 |Carlota Monedero Herranz|carlotamoh@alu.comillas.edu        |
 |José Manuel Vega Gradit |josemanuel.vega@alu.comillas.edu   |
 
-The main objective of this project is building an Art Classifier leveraging Deep Learning techniques. The data we used belongs to the [WikiArt](https://www.wikiart.org/) project. The exact dataset used is available at [kaggle](https://www.kaggle.com/datasets/sivarazadi/wikiart-art-movementsstyles). For the sake of simplicity and disk space limitations in our computers, we will only be classifying 4 of the available movement styles: Romanticism, Realism, Renaissance and Baroque. 
+The main objective of this project is building an Art Classifier leveraging Deep Learning techniques. The data we used belongs to the [WikiArt](https://www.wikiart.org/) project. The exact dataset used is available at [kaggle](https://www.kaggle.com/datasets/sivarazadi/wikiart-art-movementsstyles). For the sake of simplicity and disk space limitations in our computers, we will only be classifying 4 of the available movement styles: 
+
+- #### Romanticism
+
+<p align="left">
+    <img src="docs/romanticism_example.jpg" width="400" height="400" />
+<p>
+
+- #### Realism
+
+<p align="left">
+    <img src="docs/realism_example.jpg" width="400" height="400" />
+<p>
+
+- #### Renaissance
+
+<p align="left">
+    <img src="docs/renaissance_example.jpg" width="300" height="450" />
+<p>
+
+- #### Baroque
+
+<p align="left">
+    <img src="docs/baroque_example.jpg" width="300" height="400" />
+<p>
+
 
 We will start by building a simple CNN architecture, which will serve as our base model for reference and comparision. We will then try to extend its capabilities by using a two-step approach:
 
