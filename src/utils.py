@@ -1,11 +1,16 @@
-import os
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
+# Python base libraries
 import os
 import glob
+
+# Data Science libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Machine Learning and Deep Learning libraries
+from sklearn.metrics import classification_report
 import torch
-from tqdm import tqdm
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from transformers import ViTImageProcessor
@@ -18,7 +23,10 @@ from torchvision.transforms import (
     Resize, 
     ToTensor
 )
-from sklearn.metrics import classification_report
+
+# Other libraries
+from tqdm import tqdm
+
 
 # Constants
 ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -139,6 +147,7 @@ def plot_metric_curves(epochs, train_curve, val_curve, train_color, val_color, m
     plt.show()
     return
 
+
 def load_latest_checkpoint(model_class, logs_dir=LIGHTNING_LOGS_DIR):
     """
     Loads the latest checkpoint from the lightning_logs directory.
@@ -163,6 +172,7 @@ def load_latest_checkpoint(model_class, logs_dir=LIGHTNING_LOGS_DIR):
     
     return model
 
+
 # Create function to plot images to show data augmentation technique in a visual way
 def data_augmentation_plot(data_generator, images):
     """
@@ -177,6 +187,43 @@ def data_augmentation_plot(data_generator, images):
         row.imshow(image_iterator.next()[0].astype('int'))
         row.axis('off')
     plt.show()
+
+
+def extract_features(directory, sample_count, conv_base, datagen, batch_size):
+    """
+    Extracts features from the convolutional base of a pre-trained model.
+
+    Args:
+    -------
+    directory: str
+        Path to the directory containing the images to extract features from.
+    sample_count: int
+        Number of images in the directory.
+
+    Returns:
+    -------
+    features: numpy array
+        Features extracted from the convolutional base.
+    """
+    features = np.zeros(shape=(sample_count, 8, 8, 512))
+    labels = np.zeros(shape=(sample_count, 4))
+    generator = datagen.flow_from_directory(
+        directory,
+        target_size=(256, 256),
+        batch_size=batch_size,
+        class_mode='categorical')
+    i = 0
+    for inputs_batch, labels_batch in generator:
+        features_batch = conv_base.predict(inputs_batch)
+        features[i * batch_size : (i + 1) * batch_size] = features_batch
+        labels[i * batch_size : (i + 1) * batch_size] = labels_batch
+        i += 1
+        if i * batch_size >= sample_count:
+            # Note that since generators yield data indefinitely in a loop,
+            # we must `break` after every image has been seen once.
+            break
+    return features, labels
+
 
 def get_pytorch_predictions_from_dataloader(model, dataloader):
     """
@@ -224,6 +271,7 @@ def get_pytorch_predictions_from_dataloader(model, dataloader):
     all_targets = torch.cat(all_targets, dim=0)
 
     return all_predictions, all_targets
+
 
 def get_vit_metrics(model, train=False):
     """
