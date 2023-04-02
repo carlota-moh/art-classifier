@@ -189,7 +189,7 @@ def data_augmentation_plot(data_generator, images):
     plt.show()
 
 
-def extract_features(sample_count, input_shape, conv_base, generator, batch_size, n_classes=4):
+def extract_features(sample_count, dnn_input_shape, conv_base, generator, batch_size, n_classes=4):
     """
     Extracts features from the convolutional base of a pre-trained model.
 
@@ -197,7 +197,7 @@ def extract_features(sample_count, input_shape, conv_base, generator, batch_size
     -------
     sample_count: int
         Number of samples in the dataset.
-    input_shape: tuple
+    dnn_input_shape: tuple
         Shape of the input images.
     conv_base: Keras model
         Convolutional base of the pre-trained model.
@@ -213,7 +213,7 @@ def extract_features(sample_count, input_shape, conv_base, generator, batch_size
     features: numpy array
         Features extracted from the convolutional base.
     """
-    features = np.zeros(shape=(sample_count, input_shape[0], input_shape[1], input_shape[2]))
+    features = np.zeros(shape=(sample_count, dnn_input_shape[0], dnn_input_shape[1], dnn_input_shape[2]))
     labels = np.zeros(shape=(sample_count, n_classes))
     i = 0
     for inputs_batch, labels_batch in generator:
