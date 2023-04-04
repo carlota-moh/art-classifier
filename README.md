@@ -2,9 +2,9 @@
 
 ## **Art Classifier**
 
-This project was developed for the Unstructured Data course in the Big Data Master's Degree at Comillas ICAI University.
+This project was undertaken as part of the Unstructured Data course within the Big Data Master's Degree program at Comillas ICAI University.
 
-This project has been done by:
+The team responsible for the project includes:
 
 |Name                    |Email                              |
 |------------------------|-----------------------------------|
@@ -12,7 +12,9 @@ This project has been done by:
 |Carlota Monedero Herranz|carlotamoh@alu.comillas.edu        |
 |José Manuel Vega Gradit |josemanuel.vega@alu.comillas.edu   |
 
-The main goal of this project is building an Art Classifier leveraging Deep Learning techniques. The data we used belongs to the [WikiArt](https://www.wikiart.org/) project. The exact dataset used is available at [kaggle](https://www.kaggle.com/datasets/sivarazadi/wikiart-art-movementsstyles). This dataset is specifically tailored for building Deep Learning models that are able to classify different art-styles. For the sake of simplicity and disk space limitations, we will only be classifying 4 of the available movement styles: 
+The primary objective of this project is to construct an Art Classifier using Deep Learning techniques. We employed data from the [WikiArt](https://www.wikiart.org/) project and used a dataset available on [Kaggle](https://www.kaggle.com/datasets/sivarazadi/wikiart-art-movementsstyles), which was customized for building Deep Learning models that can classify various art styles. 
+
+Due to practical and storage limitations, we will only be classifying four of the numerous available movement styles: Romanticism, Realism, Renaissance, and Baroque:
 
 - #### Romanticism
 
@@ -38,18 +40,23 @@ The main goal of this project is building an Art Classifier leveraging Deep Lear
     <img src="docs/baroque_example.jpg" width="300" height="400" />
 <p>
 
+To ensure a balanced dataset, we cropped the original dataset to 5,000 images for each of the four styles. This will enable us to achieve a more reasonable training time while still allowing for effective model training and assessment.
+
 ## Overview
 
-We start by building a simple CNN architecture from scratch. This netwrok will serve as our base model. The main issue with this network is the significant amount of *overfitting* to the trainig data, which we try to reduce by using different techniques:
+Our project begins with the creation of a basic CNN architecture from scratch, which will serve as our base model. However, we encounter a major issue with this network: significant overfitting to the training data. To address this issue, we take an incremental approach and build on top of the initial architecture using various techniques, including dropout, batch normalization, and data augmentation.
 
-+ Dropout
-+ Batch normalization
-+ Data augmentation
+After exploring our custom-built model, we shift our focus to transfer learning and examine two different philosophies: feature extraction and fine-tuning.
 
-Once our custom-built model is fully explored, we then shift our focus towards using transfer learning by combining the convolutional part of an off-the-shelf pre-trained network, which we will then combine with a fully connected classifier (DNN). For this purpose, we will be evaluating three different models:
+1. For feature extraction, we use a pre-trained model as a fixed feature extractor, and the extracted features serve as input for training a classifier on the new task
+2. For fine-tuning, we unfreeze the last few layers of the convolutional part and retrain them along with the classifier.
+
+To accomplish this, we evaluate three models:
 
 + ResNet50
 + VGG16 & VGG19
 + MobileNet
 
-Finally, we will explore a different network architecture by using Huggingface's Transformers. 
+Finally, we explore a different network architecture using Huggingface's Transformers. 
+
+Throughout the project, we monitor accuracy and loss plotted across epochs for each model, ensuring that we interpret the results correctly and draw actionable insights.
