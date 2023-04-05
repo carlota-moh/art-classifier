@@ -40,7 +40,7 @@ Due to practical and storage limitations, we will only be classifying four of th
     <img src="docs/baroque_example.jpg" width="300" height="400" />
 <p>
 
-To ensure a balanced dataset, we cropped the original dataset to 5,000 images for each of the four styles. This will enable us to achieve a more reasonable training time while still allowing for effective model training and assessment. The final dataset used can be found [here](https://drive.google.com/drive/folders/1rEL2TdfIUkHX49IKhB6mx746CR0quYPM?usp=share_link). The validation and test sets are stored in their corresponding .zip files, whereas the training set is stored in the `train` folder, which contains for .zip files, one for each of the four styles previously mentioned.
+To ensure a balanced dataset, we cropped the original dataset to 5,000 images for each of the four styles. This will enable us to achieve a more reasonable training time while still allowing for effective model training and assessment. This modified dataset can be found [here](https://drive.google.com/drive/folders/1rEL2TdfIUkHX49IKhB6mx746CR0quYPM?usp=share_link). The validation and test sets are stored in their corresponding .zip files, whereas the training set is stored in the `train` folder, which contains four .zip files, one for each art style.
 
 ## Overview
 
